@@ -1,17 +1,19 @@
 const express = require('express')
 const cors = require('cors')
-const mongoose = require('mongoose')
+const connect = require('mongoose').connect
 require('dotenv').config()
+const userRouter = require('./routes/user-router')
 
 const app = express()
 const PORT = process.env.PORT || 8000
 
 app.use(cors())
 app.use(express.json())
+app.use('/api/v1/', userRouter)
 
 app.get('/', (req, res) => res.send('Hello world'))
 
-mongoose.connect(process.env.MONGODB_URL)
+connect(process.env.MONGODB_URL)
     .then(() => console.log('connected to mongodb'))
     .catch((e) => console.error(e))
 
