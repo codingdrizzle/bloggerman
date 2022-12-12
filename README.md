@@ -12,4 +12,4 @@
                 
     - Run ``` yarn dev ``` to start the server in development mode with nodemon 
 4. API Documentation
-  - Documentation on API endpoints can be found here 
+  - Documentation on API endpoints can be found here https://documenter.getpostman.com/view/21470420/2s8YzUvgDf
