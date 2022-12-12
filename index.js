@@ -1,15 +1,17 @@
 const express = require('express')
 const cors = require('cors')
-const {connect} = require('mongoose')
+const mongoose = require('mongoose')
 require('dotenv').config()
 
 const app = express()
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8000
 
 app.use(cors())
 app.use(express.json())
 
-connect(process.env.MONGODB_URL)
+app.get('/', (req, res) => res.send('Hello world'))
+
+mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log('connected to mongodb'))
     .catch((e) => console.error(e))
 
