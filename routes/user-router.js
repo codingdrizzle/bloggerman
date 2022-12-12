@@ -5,15 +5,15 @@ const hashPassword = require('../middlewares/hash-password')
 const getId = require('../middlewares/get-id')
 // Controllers
 const getAllUsers = require('../controllers/user-controllers/get-all-users')
-const addNewUser = require('../controllers/user-controllers/add-new-user')
+const addNewUser = require('../controllers/user-controllers/add-user')
 const editUser = require('../controllers/user-controllers/edit-user')
 const deleteUser = require('../controllers/user-controllers/delete-user')
 
 const userRouter = express.Router()
 
-userRouter.get('/users', getAllUsers)
-userRouter.post('/add-user', checkExistingUser, hashPassword, addNewUser)
-userRouter.patch('/edit-user', getId, editUser)
-userRouter.delete('/delete-user', getId, deleteUser)
+userRouter.get('/', getAllUsers)
+userRouter.post('/add', checkExistingUser, hashPassword, addNewUser)
+userRouter.patch('/edit', getId, editUser)
+userRouter.delete('/delete', getId, deleteUser)
 
 module.exports = userRouter
