@@ -2,16 +2,18 @@ const express = require('express')
 const cors = require('cors')
 // const connect = require('mongoose').connect
 require('dotenv').config()
-const userRouter = require('./routes/user-router')
-const postRouter = require('./routes/post-router')
 
 const app = express()
+const router = express.Router()
 
 app.use(cors())
 app.use(express.json())
-app.use('/api/v1/users/', userRouter)
-app.use('/api/v1/posts/', postRouter)
+// app.use('/api/v1/users/', userRouter)
+// app.use('/api/v1/posts/', postRouter)
+app.use('/api/v1/', router)
 
 app.get('/', (req, res) => res.send('Hello world'))
+const userRouter = require('./app/user/route')
+userRouter(router)
 
 module.exports = app

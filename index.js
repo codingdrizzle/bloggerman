@@ -1,6 +1,7 @@
 require('dotenv').config()
 const app = require('./server')
 const database = require('./config/db')
+const connect = require('mongoose').connect
 
 
 // const app = express()
