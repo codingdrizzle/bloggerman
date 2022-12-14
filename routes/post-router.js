@@ -9,9 +9,17 @@ const deletePost = require('../controllers/post-controllers/delete-post')
 
 const postRouter = express.Router()
 
-postRouter.get('/', getPosts)
-postRouter.post('/new', getId, addPost)
-postRouter.patch('/edit', getId, editPost)
-postRouter.delete('/delete', getId, deletePost)
+postRouter.route('/')
+          .get(getPosts)
+          .post(addPost)
+          .patch(editPost)
+          .delete(deletePost)
+
+postRouter.route('/:id')
+          .get(getPosts)
+          .post(addPost)
+          .patch(editPost)
+          .delete(deletePost)
+
 
 module.exports = postRouter
