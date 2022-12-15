@@ -10,7 +10,7 @@ exports.onSuccessDataResponse = function (res, data, message) {
     const response = {
         status: 1,
         success: true,
-        message,
+        message, 
         data: data,
     }
     return res.status(200).json(response)
