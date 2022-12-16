@@ -1,10 +1,16 @@
 const User = require('./model')
-// import logger from '../../logger/index'
+
+// Check user existence
+const checkExistingUser = async (email) => {
+    const exist = await User.findOne({ email: email })
+    return exist ? true : false
+}
 
 // Create user
 const createUser = async (data) => {
+    if(checkExistingUser(data.email)) return {"message" : "User already exist"}
     // Create auser object
-    return await User.create(data)
+    else return await User.create(data)
 }
 
 // Get user

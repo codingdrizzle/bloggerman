@@ -14,6 +14,8 @@ app.use('/api/v1/', router)
 
 app.get('/', (req, res) => res.send('Hello world'))
 const userRouter = require('./app/user/route')
+const postRouter = require('./app/post/route')
 userRouter(router)
+postRouter(router)
 
 module.exports = app

@@ -11,7 +11,7 @@ exports.onSuccessDataResponse = function (res, data, message) {
         status: 1,
         success: true,
         message,
-        data: data,  
+        data: data,
     }
     return res.status(200).json(response)
 }
