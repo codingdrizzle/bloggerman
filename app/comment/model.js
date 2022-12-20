@@ -1,13 +1,15 @@
-const { Schema, model } = require('mongoose').Schema;
+const { Schema, model } = require('mongoose');
 
 const commentSchema = new Schema({
     commenter: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     postId: {
         type: Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: 'Post',
+        required: true
     },
     comment: {
         type: String,
@@ -19,4 +21,4 @@ const commentSchema = new Schema({
     }
 });
 
-module.exports = model('Comment', reviewSchema);
+module.exports = model('Comment', commentSchema);

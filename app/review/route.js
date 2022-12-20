@@ -2,10 +2,9 @@ const { addReview, getOneReview, getAllReviews, deleteReview, editReview } = req
 const getId = require('../../middlewares/get-id')
 
 module.exports = router => {
-    router.route('/reviews/')
-        .get(getAllReviews)
-    router.route('/review/')
-        .post(addReview)
+    router.get('/reviews/', getAllReviews)
+        .post('/review/', addReview)
+
     router.route('/review/:id')
         .get(getId, getOneReview)
         .patch(getId, editReview)

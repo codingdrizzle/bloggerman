@@ -16,8 +16,10 @@ app.get('/', (req, res) => res.send('Hello world'))
 const userRouter = require('./app/user/route')
 const postRouter = require('./app/post/route')
 const reviewRouter = require('./app/review/route')
+const commentRouter = require('./app/comment/route')
 userRouter(router)
 postRouter(router)
 reviewRouter(router)
+commentRouter(router)
 
 module.exports = app

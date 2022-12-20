@@ -11,20 +11,19 @@ const getPost = async postId => {
     return await Post.find({ _id: postId }).populate('author')
 }
 
-
 // Get all Posts
 const getPosts = async limit => {
     const options = {
         page: 1,
         limit: limit,
-        sort: '-createdAt',
+        sort: 'createdAt',
     }
     return await Post.find()
         // .skip(options.page * options.limit)
         .limit(options.limit).populate({
             path: 'author',
-            select: ['_id', 'firstname', 'lastname']
-        })
+            select: ['username']
+        }).populate({ path: 'comments', model: 'Comment', select: ['comment', 'createdAt'] }).populate({ path: 'reviews', model: 'Review', select: ['rating', 'reviewer'] })
 }
 
 // Update

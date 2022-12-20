@@ -27,7 +27,7 @@ exports.addComment = async (req, res) => {
         if (Object.keys(req.body).length === 0) return responses.onErrorResponse(res, 'Bad request')
 
         const response = await createComment(req.body)
-        await Post.findOneAndUpdate({ _id: response.postId }, { $push: { reviews:response._id } })
+        await Post.findOneAndUpdate({ _id: response.postId }, { $push: { comments:response._id } })
         return responses.onSuccessDataResponse(res, response, messages.createSuccess)
     } catch (error) {
         console.log(error)

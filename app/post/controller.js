@@ -14,7 +14,7 @@ exports.getOnePost = async (req, res) => {
 
 exports.getAllPosts = async (req, res) => {
     try {
-        const response = await getPosts()
+        const response = await getPosts(req.query.limit)
         return responses.onSuccessDataResponse(res, response, 'Successful')
     } catch (error) {
         return responses.onErrorResponse(res, error.errors)

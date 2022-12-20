@@ -5,7 +5,7 @@ const postModel = new Schema({
         type: String,
         required: true
     },
-    body: {
+    content: {
         type: String,
         required: true
     },
@@ -15,7 +15,8 @@ const postModel = new Schema({
     },
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     comments: [{
         type: Schema.Types.ObjectId,
@@ -25,18 +26,6 @@ const postModel = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review'
     }]
-});
-
-// const some = postModel.virtual('http://localhost:8000/api/v1/').get(function () {
-//     return '/post/' + this._id
-// })
-
-postModel.virtual('reviewCount', {
-    ref: 'Review',
-    localField: '_id',
-    foreignField: 'postId',
-    justOne: false,
-    count: true
 });
 
 module.exports = model('Post', postModel);

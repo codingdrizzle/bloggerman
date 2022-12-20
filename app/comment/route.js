@@ -2,10 +2,10 @@ const { addComment, deleteComment, editComment, getAllComment, getOneComment } =
 const getId = require('../../middlewares/get-id')
 
 module.exports = router => {
-    router.route('/comments/')
-        .get(getAllComment)
-    router.route('/comment/')
-        .post(addComment)
+    router
+        .get('/comments/', getAllComment)
+        .post('/comment/', addComment)
+        
     router.route('/comment/:id')
         .get(getId, getOneComment)
         .patch(getId, editComment)
