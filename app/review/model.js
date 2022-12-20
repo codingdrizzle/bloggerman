@@ -1,20 +1,19 @@
-const { Schema, model } = require('mongoose').Schema;
+const { Schema, model } = require('mongoose');
 
 const reviewSchema = new Schema({
-    author: {
+    reviewer: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
-    post: {
+    postId: {
         type: Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: 'Post',
+        required: true
     },
     rating: {
         type: Number,
-        required: true
-    },
-    reviewText: {
-        type: String,
+        max: 5,
         required: true
     },
     createdAt: {

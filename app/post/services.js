@@ -20,7 +20,10 @@ const getPosts = async limit => {
     }
     return await Post.find()
         // .skip(options.page * options.limit)
-        .limit(options.limit).populate('author')
+        .limit(options.limit).populate({
+            path: 'author',
+            select: ['_id', 'firstname', 'lastname']
+        })
 }
 
 // Update

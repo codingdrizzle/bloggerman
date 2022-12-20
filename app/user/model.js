@@ -25,10 +25,6 @@ const userModel = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    },
-    posts: {
-        type: Array,
-        default: []
     }
 })
 
