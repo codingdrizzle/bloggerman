@@ -4,11 +4,11 @@ const validator = require('mongoose-validator');
 const userModel = new Schema({
     firstname: {
         type: String,
-        required: true
+        required: true,
     },
     lastname: {
         type: String,
-        required: true
+        required: true,
     },
     email: {
         type: String,
@@ -16,11 +16,17 @@ const userModel = new Schema({
         validate: validator({
             validator: 'isEmail',
             message: 'Please enter a valid email address'
-        })
+        }),
+        unique: true
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true   
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
     createdAt: {
         type: Date,

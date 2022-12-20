@@ -1,3 +1,4 @@
+const { count } = require('./model')
 const Post = require('./model')
 
 // Create

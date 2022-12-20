@@ -5,12 +5,12 @@ const commentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    post: {
+    postId: {
         type: Schema.Types.ObjectId,
         ref: 'Post'
     },
     comment: {
-        type: Number,
+        type: String,
         required: true
     },
     createdAt: {

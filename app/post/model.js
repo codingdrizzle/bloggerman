@@ -31,4 +31,12 @@ const postModel = new Schema({
 //     return '/post/' + this._id
 // })
 
+postModel.virtual('reviewCount', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'postId',
+    justOne: false,
+    count: true
+});
+
 module.exports = model('Post', postModel);

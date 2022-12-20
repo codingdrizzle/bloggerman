@@ -9,7 +9,7 @@ const createReview = async (data) => {
 // Get a review
 const getReview = async reviewId => {
     return await Review.find({ _id: reviewId })
-        .populate({ path: 'reviewer', select: ['firstname', 'lastname'] })
+        .populate({ path: 'reviewer', select: ['username'] })
         .populate({ path: 'postId', select: ['title', 'body', 'author', 'createdAt'] })
 }
 
@@ -24,7 +24,7 @@ const getReviews = async limit => {
     return await Review.find()
         .skip(options.page * options.limit)
         .limit(options.limit)
-        .populate({ path: 'reviewer', select: ['firstname', 'lastname'] })
+        .populate({ path: 'reviewer', select: ['username'] })
         .populate({ path: 'postId', select: ['title', 'body', 'author', 'createdAt'] })
 }
 
