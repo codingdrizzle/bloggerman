@@ -15,7 +15,7 @@ exports.getOneComment = async (req, res) => {
 
 exports.getAllComment = async (req, res) => {
     try {
-        const response = await this.getAllComment()
+        const response = await getComments()
         return responses.onSuccessDataResponse(res, response, 'Successful')
     } catch (error) {
         return responses.onErrorResponse(res, error.errors)
@@ -26,7 +26,7 @@ exports.addComment = async (req, res) => {
     try {
         if (Object.keys(req.body).length === 0) return responses.onErrorResponse(res, 'Bad request')
 
-        const response = await createComment(req.body)
+        const response = await createComment(req.body);
         await Post.findOneAndUpdate({ _id: response.postId }, { $push: { comments:response._id } })
         return responses.onSuccessDataResponse(res, response, messages.createSuccess)
     } catch (error) {
